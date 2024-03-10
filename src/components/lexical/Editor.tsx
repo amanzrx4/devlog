@@ -6,15 +6,16 @@ import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { EditorState } from "lexical";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
-// import { Editor } from "@lexical/react/LexicalContentEditable.prod";
 import Form from "./Form";
 import "./styles.css";
 
+// eslint-disable-next-line no-unused-vars
 function MyOnChangePlugin({
   onChange,
 }: {
+  // eslint-disable-next-line no-unused-vars
   onChange: (state: EditorState) => void;
 }) {
   // Access the editor through the LexicalComposerContext

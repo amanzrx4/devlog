@@ -1,8 +1,5 @@
-import React from "react";
+import { fetchPostsPartial } from "../../actions";
 import Thread from "./Thread";
-import { threads as sampleThreads } from "@/fixtures/threads";
-import { fetchPost, fetchPosts, fetchPostsPartial } from "../../actions";
-import useParseLexicalToHtml from "@/hooks/useParseLexicalToHtml";
 
 export interface Thread {
   id: number;
@@ -14,7 +11,7 @@ interface Props {
   threads?: Thread[];
 }
 
-export default async function ListThreads({ threads = sampleThreads }: Props) {
+export default async function ListThreads(_props: Props) {
   const posts = await fetchPostsPartial();
 
   return posts.map((t) => (

@@ -4,7 +4,7 @@ import "@/utils/domPollyfill";
 
 export default function useParseLexicalToHtml(lexicalNodesString: string) {
   let html = "";
-  const editor = createHeadlessEditor();
+  const editor = createHeadlessEditor({ editable: false });
 
   editor.setEditorState(editor.parseEditorState(lexicalNodesString));
 

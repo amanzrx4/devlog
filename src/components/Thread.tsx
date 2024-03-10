@@ -1,6 +1,5 @@
-import useParseLexicalToHtml from "@/hooks/useParseLexicalToHtml";
-import { Thread } from "./ThreadsList";
 import Link from "next/link";
+import { Thread } from "./ThreadsList";
 type Props = Omit<Thread, "description">;
 
 export default function Thread({ title, id }: Props) {
