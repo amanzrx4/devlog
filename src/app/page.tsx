@@ -1,5 +1,5 @@
-import ThreadsList from "@/components/ThreadsList";
-import Navbar from "@/components/Navbar";
+import ThreadsList from "@/components/ThreadsList"
+import Navbar from "@/components/Navbar"
 
 export default function Home() {
   return (
@@ -7,5 +7,5 @@ export default function Home() {
       <Navbar />
       <ThreadsList />
     </main>
-  );
+  )
 }

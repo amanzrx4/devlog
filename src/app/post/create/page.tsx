@@ -1,4 +1,4 @@
-import LexicalEditor from "@/components/lexical/Editor";
+import LexicalEditor from "@/components/lexical/Editor"
 
 export default async function PostCreate() {
   return (
@@ -6,5 +6,5 @@ export default async function PostCreate() {
       <div>scre</div>
       <LexicalEditor />
     </div>
-  );
+  )
 }

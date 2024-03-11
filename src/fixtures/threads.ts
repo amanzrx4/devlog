@@ -1,4 +1,4 @@
-import { Thread } from "@/components/ThreadsList";
+import { Thread } from "@/components/ThreadsList"
 
 export const threads: Thread[] = [
   {
@@ -60,4 +60,4 @@ export const threads: Thread[] = [
     description:
       "Stay updated on the latest cybersecurity threats and discuss preventive measures for online security.",
   },
-];
+]

@@ -1,29 +1,29 @@
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { createPost } from "../../../actions";
-import { useRouter } from "next/navigation";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
+import { createPost } from "../../../actions"
+import { useRouter } from "next/navigation"
 
 interface Props {
-  input: string;
+  input: string
 }
 
 export default function Form(props: Props) {
-  const [editor] = useLexicalComposerContext();
-  const { push } = useRouter();
+  const [editor] = useLexicalComposerContext()
+  const { push } = useRouter()
 
   const onClick = async () => {
-    const content = JSON.stringify(editor.getEditorState().toJSON());
-    const title = props.input;
+    const content = JSON.stringify(editor.getEditorState().toJSON())
+    const title = props.input
 
-    if (!title) return;
+    if (!title) return
 
     await createPost(title, content)
       .then(() => {
-        push("/");
+        push("/")
       })
       .catch((e) => {
-        console.log("e", e);
-      });
-  };
+        console.log("e", e)
+      })
+  }
 
   return (
     <button
@@ -33,5 +33,5 @@ export default function Form(props: Props) {
     >
       submit
     </button>
-  );
+  )
 }

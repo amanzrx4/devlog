@@ -1,10 +1,10 @@
-import useParseLexicalToHtml from "@/hooks/useParseLexicalToHtml";
-import { Thread } from "./ThreadsList";
+import useParseLexicalToHtml from "@/hooks/useParseLexicalToHtml"
+import { Thread } from "./ThreadsList"
 
 interface Props extends Thread {}
 
 export default function Post({ title, description }: Props) {
-  const { html } = useParseLexicalToHtml(description);
+  const { html } = useParseLexicalToHtml(description)
   return (
     <div className="flex items-center justify-center my-8">
       <div>
@@ -17,5 +17,5 @@ export default function Post({ title, description }: Props) {
         ></div>
       </div>
     </div>
-  );
+  )
 }

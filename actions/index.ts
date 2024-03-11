@@ -1,14 +1,14 @@
-"use server";
-import prisma from "@/utils/db";
+"use server"
+import prisma from "@/utils/db"
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
+    setTimeout(resolve, ms)
+  })
 }
 
 export async function fetchPosts() {
-  return prisma.post.findMany();
+  return prisma.post.findMany()
 }
 
 /**
@@ -20,7 +20,7 @@ export async function fetchPostsPartial() {
       id: true,
       title: true,
     },
-  });
+  })
 }
 
 export async function fetchPost(id: number) {
@@ -28,7 +28,7 @@ export async function fetchPost(id: number) {
     where: {
       id,
     },
-  });
+  })
 }
 
 export async function createPost(title: string, description: string) {
@@ -37,5 +37,5 @@ export async function createPost(title: string, description: string) {
       description,
       title,
     },
-  });
+  })
 }
