@@ -14,9 +14,5 @@ interface Props {
 export default async function ListThreads(_props: Props) {
   const posts = await fetchPostsPartial();
 
-  return posts.map((t) => (
-    <div key={t.title} className="bg-sky-200 p-2 my-2 cursor-pointer">
-      <Thread {...t} />
-    </div>
-  ));
+  return posts.map((t) => <Thread key={t.title} {...t} />);
 }
