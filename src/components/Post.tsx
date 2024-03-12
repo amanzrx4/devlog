@@ -3,7 +3,7 @@ import { Thread } from "./ThreadsList"
 
 interface Props extends Thread {}
 
-export default function Post({ title, description }: Props) {
+export default function Post({ title, content: description }: Props) {
   const { html } = useParseLexicalToHtml(description)
   return (
     <div className="flex items-center justify-center my-8">

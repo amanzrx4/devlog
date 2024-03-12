@@ -4,7 +4,7 @@ import Thread from "./Thread"
 export interface Thread {
   id: number
   title: string
-  description: string
+  content: string
 }
 
 interface Props {

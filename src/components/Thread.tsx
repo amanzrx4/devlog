@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Thread } from "./ThreadsList"
-type Props = Omit<Thread, "description">
+
+type Props = Omit<Thread, "content">
 
 export default function Thread({ title, id }: Props) {
   const href = `/post/${id}`

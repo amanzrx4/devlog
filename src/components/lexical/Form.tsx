@@ -1,33 +1,43 @@
+"use client"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { createPost } from "../../../actions"
 import { useRouter } from "next/navigation"
+import { createPost } from "../../../actions"
+
+import { InputState } from "./Editor"
 
 interface Props {
-  input: string
+  inputState: InputState
 }
 
-export default function Form(props: Props) {
+// eslint-disable-next-line @next/next/no-async-client-component
+export default async function Form(props: Props) {
   const [editor] = useLexicalComposerContext()
   const { push } = useRouter()
 
   const onClick = async () => {
     const content = JSON.stringify(editor.getEditorState().toJSON())
-    const title = props.input
+    const { title, categoryId, tagIds } = props.inputState
 
-    if (!title) return
-
-    await createPost(title, content)
+    await createPost({
+      categoryId,
+      content,
+      title,
+      tagIds: [tagIds],
+    })
       .then(() => {
         push("/")
       })
       .catch((e) => {
         console.log("e", e)
+        // toast("e.message", { duration: 500000000 })
       })
   }
 
+  return null
+
   return (
     <button
-      disabled={!props.input}
+      disabled={!props.inputState}
       className="bg-gray-400 p-2 py-1 hover:bg-gray-500 disabled:opacity-70"
       onClick={onClick}
     >

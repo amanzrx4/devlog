@@ -5,12 +5,11 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable"
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary"
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
+import { Category, Tag } from "@prisma/client"
 import { EditorState } from "lexical"
-import { useEffect, useState } from "react"
+import { PropsWithChildren, useEffect } from "react"
 import ToolbarPlugin from "./plugins/ToolbarPlugin"
-import Form from "./Form"
 import "./styles.css"
-
 // eslint-disable-next-line no-unused-vars
 function MyOnChangePlugin({
   onChange,
@@ -32,8 +31,24 @@ function MyOnChangePlugin({
   return null
 }
 
-export default function LexicalEditor() {
-  const [input, setInput] = useState("")
+interface Props extends PropsWithChildren {
+  categories: Category[]
+  tags: Tag[]
+  input: InputState
+  setInput: (args: Partial<InputState>) => void
+}
+export type InputState = {
+  title: string
+  tagIds: string
+  categoryId: string
+}
+export default function LexicalEditor({
+  categories,
+  tags,
+  children,
+  setInput,
+  input,
+}: Props) {
   return (
     <LexicalComposer
       initialConfig={{
@@ -43,12 +58,40 @@ export default function LexicalEditor() {
     >
       <div className="editor-container">
         <input
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => setInput({ title: e.target.value })}
           placeholder="title"
           type="text"
           required
           className="w-full focus:outline-none p-2"
         />
+
+        <select
+          name="category"
+          className="w-full p-2"
+          onChange={(e) => setInput({ categoryId: e.target.value })}
+        >
+          <option value="">--Please choose a category--</option>
+
+          {categories.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.categoryName}
+            </option>
+          ))}
+        </select>
+
+        <select
+          name="tags"
+          className="w-full p-2"
+          onChange={(e) => setInput({ tagIds: e.target.value })}
+        >
+          <option value="">--Please select some tags--</option>
+
+          {tags.map((t) => (
+            <option key={t.id} value={t.id}>
+              {t.tagName}
+            </option>
+          ))}
+        </select>
 
         <ToolbarPlugin />
         <HistoryPlugin />
@@ -65,7 +108,7 @@ export default function LexicalEditor() {
             ErrorBoundary={LexicalErrorBoundary}
           />
         </div>
-        <Form input={input} />
+        {children}
       </div>
     </LexicalComposer>
   )
