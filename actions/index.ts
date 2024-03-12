@@ -2,7 +2,6 @@
 import prisma from "@/utils/db"
 import { Post } from "@prisma/client"
 import { revalidatePath } from "next/cache"
-import { minLength, object, parse, string } from "valibot"
 
 /**
  *
@@ -60,11 +59,11 @@ export async function fetchTags() {
  *
  */
 
-const postSchema = object({
-  categoryId: string(),
-  content: string([minLength(1)]),
-  title: string([minLength(1)]),
-})
+// const postSchema = object({
+//   categoryId: string(),
+//   content: string([minLength(1)]),
+//   title: string([minLength(1)]),
+// })
 
 export async function createPost({
   tagIds = [],
@@ -72,7 +71,6 @@ export async function createPost({
 }: Omit<Post, "id"> & {
   tagIds?: string[]
 }) {
-  // parse(postSchema, args)
   await prisma.post.create({
     data: {
       ...args,
@@ -83,4 +81,25 @@ export async function createPost({
   })
 
   revalidatePath("/", "page")
+}
+
+export async function addReply(
+  postId: number,
+  { content }: { content: string },
+) {
+  await prisma.reply.create({
+    data: {
+      content,
+      postId,
+    },
+  })
+  revalidatePath(`post/${postId}`)
+}
+
+export async function fetchRepliesForPost(postId: number) {
+  return await prisma.reply.findMany({
+    where: {
+      postId,
+    },
+  })
 }

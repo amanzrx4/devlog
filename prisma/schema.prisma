@@ -17,6 +17,7 @@ model Post {
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
   tags       Tag[]
+  Reply      Reply[]
 }
 
 model Category {
@@ -30,4 +31,13 @@ model Tag {
   tagName String @map("tag_name")
   Post    Post?  @relation(fields: [postId], references: [id])
   postId  Int?
+}
+
+model Reply {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  postId    Int
+  post      Post     @relation(fields: [postId], references: [id])
 }
