@@ -10,7 +10,7 @@ interface Props {
 }
 
 // eslint-disable-next-line @next/next/no-async-client-component
-export default async function Form(props: Props) {
+export default function Form(props: Props) {
   const [editor] = useLexicalComposerContext()
   const { push } = useRouter()
 
