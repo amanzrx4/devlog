@@ -62,7 +62,7 @@ export default function LexicalEditor({
           placeholder="title"
           type="text"
           required
-          className="w-full focus:outline-none p-2"
+          className="w-full p-2"
         />
 
         <select

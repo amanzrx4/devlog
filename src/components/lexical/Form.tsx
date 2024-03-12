@@ -33,8 +33,6 @@ export default function Form(props: Props) {
       })
   }
 
-  return null
-
   return (
     <button
       disabled={!props.inputState}
