@@ -1,13 +1,14 @@
+import ReplyForm from "@/components/ReplyForm"
 import useParseLexicalToHtml from "@/hooks/useParseLexicalToHtml"
-import ReplyForm from "./ReplyForm"
+import { fetchRepliesForPost } from "../../actions"
 import Reply from "./Reply"
 import { Thread } from "./ThreadsList"
-import { fetchRepliesForPost } from "../../actions"
 
 interface Props extends Thread {}
 
 export default async function Post({ title, content: description, id }: Props) {
   const { html } = useParseLexicalToHtml(description)
+
   const replies = await fetchRepliesForPost(id)
 
   return (

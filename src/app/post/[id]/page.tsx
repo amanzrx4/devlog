@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { fetchPost } from "../../../../actions"
 import PostComp from "@/components/Post"
+import Link from "next/link"
 
 interface NextQueryUrl<
   P = Record<string, unknown>,
@@ -23,5 +24,12 @@ export default async function Post(props: Props) {
     return notFound()
   }
 
-  return <PostComp {...post} />
+  return (
+    <div className="m-4">
+      <Link href="/" className="underline">
+        Home
+      </Link>
+      <PostComp {...post} />
+    </div>
+  )
 }
