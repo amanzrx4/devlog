@@ -12,6 +12,7 @@
     "@lexical/headless": "^0.13.1",
     "@lexical/react": "^0.13.1",
     "@prisma/client": "5.10.2",
+    "clsx": "^2.1.0",
     "jsdom": "^24.0.0",
     "lexical": "^0.13.1",
     "next": "14.1.0",

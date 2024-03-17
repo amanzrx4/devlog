@@ -39,3 +39,6 @@ next-env.d.ts
 /prisma/dev.db
 /prisma/*journal
 .env
+
+/notes.md
+test.ts

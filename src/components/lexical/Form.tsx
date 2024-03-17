@@ -2,21 +2,24 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
 import { useRouter } from "next/navigation"
 import { createPost } from "../../../actions"
+import { InputState } from "./RichTextEditor"
+import clsx from "clsx"
+import React, { ComponentPropsWithoutRef } from "react"
 
-import { InputState } from "./Editor"
-
-interface Props {
+interface Props extends ComponentPropsWithoutRef<"div"> {
   inputState: InputState
 }
 
-// eslint-disable-next-line @next/next/no-async-client-component
 export default function Form(props: Props) {
   const [editor] = useLexicalComposerContext()
   const { push } = useRouter()
 
+  let { className, inputState, ...rest } = props
+  className = clsx("", className)
+
   const onClick = async () => {
     const content = JSON.stringify(editor.getEditorState().toJSON())
-    const { title, categoryId, tagIds } = props.inputState
+    const { title, categoryId, tagIds } = inputState
 
     await createPost({
       categoryId,
@@ -29,17 +32,18 @@ export default function Form(props: Props) {
       })
       .catch((e) => {
         console.log("e", e)
-        // toast("e.message", { duration: 500000000 })
       })
   }
 
   return (
-    <button
-      disabled={!props.inputState}
-      className="bg-gray-400 p-2 py-1 hover:bg-gray-500 disabled:opacity-70"
-      onClick={onClick}
-    >
-      submit
-    </button>
+    <div {...rest} className={className}>
+      <button
+        disabled={!inputState}
+        className="bg-gray-400 p-2 py-1 hover:bg-gray-500 disabled:opacity-70"
+        onClick={onClick}
+      >
+        submit
+      </button>
+    </div>
   )
 }
