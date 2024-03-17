@@ -9,7 +9,7 @@ interface Props extends Thread {}
 export default async function Post({ title, content: description, id }: Props) {
   const { html } = useParseLexicalToHtml(description)
   const replies = await fetchRepliesForPost(id)
-  console.log("repleis", replies)
+
   return (
     <div>
       <div className="flex items-center justify-center my-8">
@@ -32,8 +32,6 @@ export default async function Post({ title, content: description, id }: Props) {
           <Reply key={r.id} {...r} />
         ))}
       </div>
-
-      <ReplyForm postId={id} />
     </div>
   )
 }
