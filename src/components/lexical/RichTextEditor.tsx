@@ -6,13 +6,7 @@ import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
 import { PropsWithChildren } from "react"
 import "./styles.css"
 
-interface Props extends PropsWithChildren {
-  // categories: Category[]
-  // tags: Tag[]
-  // input: InputState
-  // // eslint-disable-next-line no-unused-vars
-  // setInput: (args: Partial<InputState>) => void
-}
+interface Props extends PropsWithChildren {}
 export type InputState = {
   title: string
   tagIds: string
@@ -21,7 +15,6 @@ export type InputState = {
 export default function RichTextEditor({ children }: Props) {
   return (
     <LexicalProvider>
-      {/* <div className="editor-container"> */}
       <div className="editor-inner">
         <RichTextPlugin
           contentEditable={<ContentEditable className="editor-input" />}
@@ -30,7 +23,6 @@ export default function RichTextEditor({ children }: Props) {
         />
       </div>
       {children}
-      {/* </div> */}
     </LexicalProvider>
   )
 }

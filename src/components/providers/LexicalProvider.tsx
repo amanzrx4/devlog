@@ -22,14 +22,6 @@ export default function LexicalProvider(props: Props) {
 
         {/* The children node will have access to editor's state */}
         {props.children}
-
-        {/* <div className="editor-inner">
-        <RichTextPlugin
-          contentEditable={<ContentEditable className="editor-input" />}
-          placeholder={null}
-          ErrorBoundary={LexicalErrorBoundary}
-        />
-      </div> */}
       </div>
     </LexicalComposer>
   )
