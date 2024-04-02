@@ -16,7 +16,7 @@ export default async function Post({ title, content: description, id }: Props) {
       <div className="flex items-center justify-center my-8">
         <div>
           <h1 className="font-bold">
-            <span className="font-normal">{title}</span>
+            <span className="font-normal">{title}(title)</span>
           </h1>
           <div
             className="inline-block"

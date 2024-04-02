@@ -36,13 +36,13 @@ export default function EditorForm({ categories, tags }: Props) {
           <select
             name="category"
             className="w-full p-2"
-            onChange={(e) => setInput({ categoryId: e.target.value })}
+            onChange={(event) => setInput({ categoryId: event.target.value })}
           >
             <option value="">--Please choose a category--</option>
 
-            {categories.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.categoryName}
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.categoryName}
               </option>
             ))}
           </select>
@@ -54,9 +54,9 @@ export default function EditorForm({ categories, tags }: Props) {
           >
             <option value="">--Please select some tags--</option>
 
-            {tags.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.tagName}
+            {tags.map((tag) => (
+              <option key={tag.id} value={tag.id}>
+                {tag.tagName}
               </option>
             ))}
           </select>

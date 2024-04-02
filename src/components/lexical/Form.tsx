@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation"
 import { createPost } from "../../../actions"
 import { InputState } from "./RichTextEditor"
 import clsx from "clsx"
-import React, { ComponentPropsWithoutRef } from "react"
+import React, { ButtonHTMLAttributes } from "react"
 
-interface Props extends ComponentPropsWithoutRef<"div"> {
+interface Props extends ButtonHTMLAttributes<HTMLDivElement> {
   inputState: InputState
 }
 

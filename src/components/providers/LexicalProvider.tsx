@@ -2,7 +2,8 @@ import ToolbarPlugin from "@/components/lexical/plugins/ToolbarPlugin"
 import "@/components/lexical/styles.css"
 import { LexicalComposer } from "@lexical/react/LexicalComposer"
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin"
-import React, { PropsWithChildren } from "react"
+import { PropsWithChildren } from "react"
+
 // eslint-disable-next-line no-unused-vars
 interface Props extends PropsWithChildren {}
 
